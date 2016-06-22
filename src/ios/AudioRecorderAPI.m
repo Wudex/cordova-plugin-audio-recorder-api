@@ -75,6 +75,9 @@
     NSLog(@"recording playback");
     NSURL *url = [NSURL fileURLWithPath:recorderFilePath];
     NSError *err;
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord
+                                    withOptions:AVAudioSessionCategoryOptionDefaultToSpeaker
+                                           error:nil];
     player = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&err];
     player.numberOfLoops = 0;
     player.delegate = self;
